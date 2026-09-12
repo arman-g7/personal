@@ -14,6 +14,7 @@ posts/*.md          the posts themselves
 posts/manifest.json list of post filenames
 css/style.css
 js/i18n.js          English/Persian strings + the language toggle
+js/theme.js         light/dark toggle (loaded from <head>)
 js/render-md.js     frontmatter parser + markdown rendering
 js/blog-list.js     builds the post list
 ```
@@ -57,6 +58,23 @@ The English text lives in the HTML, so the pages still read correctly with
 JavaScript disabled. `js/i18n.js` holds the Persian translations, keyed by the
 `data-i18n` attributes in the HTML — to edit Persian text, edit that file; to
 edit English text, edit the HTML.
+
+## Theme
+
+Light and dark. By default the page follows the operating system; the
+toggle in the header overrides that and the choice is kept in
+`localStorage` under the key `theme` (`light` or `dark`, absent means
+follow the system).
+
+`js/theme.js` is loaded from `<head>` rather than the end of the body on
+purpose — it sets `data-theme` on `<html>` before the first paint, so a
+reader in dark mode never gets a flash of cream.
+
+The palette lives in `css/style.css` as custom properties, defined three
+times: light on `:root`, dark under `prefers-color-scheme` for readers who
+have not chosen, and dark again on `:root[data-theme="dark"]` for readers
+who have. The last two are the same values — if you change one, change the
+other.
 
 ## Fonts
 

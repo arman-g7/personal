@@ -71,7 +71,11 @@
       'post.in': 'in English',
       'post.in.fa': 'in Persian',
       'toggle.other': 'فارسی',
-      'toggle.label': 'Switch to Persian'
+      'toggle.label': 'Switch to Persian',
+      'theme.toDark': 'Dark',
+      'theme.toLight': 'Light',
+      'theme.toDark.label': 'Switch to the dark theme',
+      'theme.toLight.label': 'Switch to the light theme'
     },
     fa: {
       'posts.empty': 'هنوز چیزی ننوشته‌ام.',
@@ -83,7 +87,11 @@
       'post.in': 'به انگلیسی',
       'post.in.fa': 'به فارسی',
       'toggle.other': 'English',
-      'toggle.label': 'Switch to English'
+      'toggle.label': 'Switch to English',
+      'theme.toDark': 'تیره',
+      'theme.toLight': 'روشن',
+      'theme.toDark.label': 'تغییر به پوستهٔ تیره',
+      'theme.toLight.label': 'تغییر به پوستهٔ روشن'
     }
   };
 

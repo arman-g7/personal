@@ -4,6 +4,8 @@
    --------------------------------------------------------------- */
 
 :root {
+  color-scheme: light;
+
   /* warm cream paper, charcoal ink, one muted ochre accent */
   --bg:        #faf8f5;
   --bg-inset:  #f3eee4;
@@ -20,15 +22,31 @@
   --measure: 34rem;
 }
 
+/* Dark is the same paper turned down: warm near-black, warm off-white ink,
+   the ochre lifted enough to stay legible. The two blocks below are the
+   same palette — one for readers who have set nothing and whose system asks
+   for dark, one for readers who picked dark here. Keep them in sync. */
+
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg:       #191816;
-    --bg-inset: #232118;
-    --text:     #e9e4da;
-    --muted:    #a09889;
-    --rule:     #34312a;
-    --accent:   #d0a06a;
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg:       #171613;
+    --bg-inset: #201e1a;
+    --text:     #e8e3d9;
+    --muted:    #9d9488;
+    --rule:     #322f29;
+    --accent:   #cf9d64;
   }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg:       #171613;
+  --bg-inset: #201e1a;
+  --text:     #e8e3d9;
+  --muted:    #9d9488;
+  --rule:     #322f29;
+  --accent:   #cf9d64;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -103,9 +121,9 @@ body {
   font-size: 0.9375rem;
 }
 
-/* ---------- language toggle ---------- */
+/* ---------- header toggles (language, theme) ---------- */
 
-.lang-toggle {
+.toggle {
   appearance: none;
   background: none;
   border: 0;
@@ -119,10 +137,11 @@ body {
   cursor: pointer;
 }
 
-.lang-toggle:hover { color: var(--text); border-bottom-color: var(--accent); }
-.lang-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.toggle:hover { color: var(--text); border-bottom-color: var(--accent); }
+.toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
-/* the toggle always names the *other* language, so it reads in that language */
+/* the language button names the *other* language, so it is set in that
+   language's typeface; the theme button always matches the interface */
 #lang-toggle[data-shows="fa"] { font-family: var(--persian); }
 #lang-toggle[data-shows="en"] { font-family: var(--latin); }
 
